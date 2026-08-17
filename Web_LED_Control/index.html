@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arduino LED Control</title>
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-color: #f8fafc;
+      --primary: #3b82f6;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --border-color: #334155;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      background-color: var(--border-color);
+      color: #94a3b8;
+    }
+
+    .status-badge.connected {
+      background-color: rgba(34, 197, 94, 0.2);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .btn-connect {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-connect:hover {
+      background-color: #2563eb;
+    }
+
+    .btn-on {
+      background-color: var(--success);
+      color: white;
+    }
+
+    .btn-on:hover {
+      background-color: #16a34a;
+    }
+
+    .btn-off {
+      background-color: var(--danger);
+      color: white;
+    }
+
+    .btn-off:hover {
+      background-color: #dc2626;
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Arduino LED Control</h2>
+    <div id="status" class="status-badge">Disconnected</div>
+
+    <button id="btnConnect" class="btn btn-connect">Connect to Arduino</button>
+
+    <div class="button-group">
+      <button id="btnOn" class="btn btn-on" disabled>Turn ON</button>
+      <button id="btnOff" class="btn btn-off" disabled>Turn OFF</button>
+    </div>
+  </div>
+
+  <script>
+    let port;
+    let writer;
+
+    const btnConnect = document.getElementById('btnConnect');
+    const btnOn = document.getElementById('btnOn');
+    const btnOff = document.getElementById('btnOff');
+    const statusDiv = document.getElementById('status');
+
+    // Check for Web Serial support
+    if (!("serial" in navigator)) {
+      alert("Web Serial API is not supported in this browser. Please use Chrome or Edge.");
+    }
+
+    btnConnect.addEventListener('click', async () => {
+      try {
+        if (port) {
+          await writer.close();
+          await port.close();
+          port = null;
+          statusDiv.textContent = "Disconnected";
+          statusDiv.classList.remove('connected');
+          btnConnect.textContent = "Connect to Arduino";
+          btnOn.disabled = true;
+          btnOff.disabled = true;
+          return;
+        }
+
+        // Prompt user to select port
+        port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 9600 });
+
+        const textEncoder = new TextEncoderStream();
+        const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+        writer = textEncoder.writable.getWriter();
+
+        statusDiv.textContent = "Connected";
+        statusDiv.classList.add('connected');
+        btnConnect.textContent = "Disconnect";
+        btnOn.disabled = false;
+        btnOff.disabled = false;
+
+      } catch (err) {
+        console.error("Serial error:", err);
+        alert("Failed to connect: " + err.message);
+      }
+    });
+
+    async function sendCommand(command) {
+      if (writer) {
+        await writer.write(command + "\n");
+      }
+    }
+
+    btnOn.addEventListener('click', () => sendCommand('on'));
+    btnOff.addEventListener('click', () => sendCommand('off'));
+  </script>
+</body>
+</html>

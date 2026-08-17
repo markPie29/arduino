@@ -1,0 +1,5 @@
+C:\Users\Nitro V15\Documents\GitHub\arduino\VB_LED_Control\obj\Debug\net6.0-windows\VB_LED_Control.vbproj.AssemblyReference.cache
+C:\Users\Nitro V15\Documents\GitHub\arduino\VB_LED_Control\obj\Debug\net6.0-windows\VB_LED_Control.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nitro V15\Documents\GitHub\arduino\VB_LED_Control\obj\Debug\net6.0-windows\VB_LED_Control.AssemblyInfoInputs.cache
+C:\Users\Nitro V15\Documents\GitHub\arduino\VB_LED_Control\obj\Debug\net6.0-windows\VB_LED_Control.AssemblyInfo.vb
+C:\Users\Nitro V15\Documents\GitHub\arduino\VB_LED_Control\obj\Debug\net6.0-windows\VB_LED_Control.vbproj.CoreCompileInputs.cache
