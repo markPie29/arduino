@@ -1,0 +1,83 @@
+//
+// Copyright 2015 Google Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+// FirebaseDemo_ESP8266 is a sample that demo the different functions
+// of the FirebaseArduino API.
+
+#include <ESP8266WiFi.h>
+#include <FirebaseArduino.h>
+
+// Set these to run example.
+#define FIREBASE_HOST "home-automation-74e19-default-rtdb.firebaseio.com"
+#define FIREBASE_AUTH "g7LUnaf7JHOhCeyMia8QGZcCEBL369odAUPGJuVi"
+#define WIFI_SSID "Radhe Radhe"
+#define WIFI_PASSWORD "7067nilu"
+
+void setup() {
+  Serial.begin(9600);
+
+  // connect to wifi.
+  pinMode(D2,OUTPUT);
+  pinMode(D4,OUTPUT);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("connecting");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+  }
+  Serial.println();
+  Serial.print("connected: ");
+  Serial.println(WiFi.localIP());
+  
+  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+  Firebase.set("LED_STATUS",0);
+  Firebase.set("FAN_STATUS",0);
+}
+
+int b = 0;
+int f = 0;
+
+void loop() {
+  // set value
+  b=Firebase.getInt("LED_STATUS");
+  f=Firebase.getInt("FAN_STATUS");
+  // handle error
+
+  //For Bulb
+  if (b==0) {
+      Serial.print("LED On");
+      digitalWrite(D2,HIGH);  
+      return;
+      delay(100);
+  }
+  else{
+    Serial.print("LED Off");
+      digitalWrite(D2,LOW); 
+    }
+  // update value
+   //For Fan
+  if (f==0) {
+      Serial.print("FAN On");
+      digitalWrite(D4,HIGH);  
+      return;
+      delay(100);
+  }
+  else{
+    Serial.print("FAN Off");
+      digitalWrite(D4,LOW); 
+    }
+    // update value
+}
