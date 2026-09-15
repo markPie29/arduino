@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Nitro V15\\Documents\\GitHub\\arduino\\VB_Robotic_Arm_Control\\VB_Robotic_Arm_Control.vbproj": {}
+    "C:\\Users\\Prince\\Documents\\GitHub\\arduino\\VB_Robotic_Arm_Control\\VB_Robotic_Arm_Control.vbproj": {}
   },
   "projects": {
-    "C:\\Users\\Nitro V15\\Documents\\GitHub\\arduino\\VB_Robotic_Arm_Control\\VB_Robotic_Arm_Control.vbproj": {
+    "C:\\Users\\Prince\\Documents\\GitHub\\arduino\\VB_Robotic_Arm_Control\\VB_Robotic_Arm_Control.vbproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Nitro V15\\Documents\\GitHub\\arduino\\VB_Robotic_Arm_Control\\VB_Robotic_Arm_Control.vbproj",
+        "projectUniqueName": "C:\\Users\\Prince\\Documents\\GitHub\\arduino\\VB_Robotic_Arm_Control\\VB_Robotic_Arm_Control.vbproj",
         "projectName": "VB_Robotic_Arm_Control",
-        "projectPath": "C:\\Users\\Nitro V15\\Documents\\GitHub\\arduino\\VB_Robotic_Arm_Control\\VB_Robotic_Arm_Control.vbproj",
-        "packagesPath": "C:\\Users\\Nitro V15\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Nitro V15\\Documents\\GitHub\\arduino\\VB_Robotic_Arm_Control\\obj\\",
+        "projectPath": "C:\\Users\\Prince\\Documents\\GitHub\\arduino\\VB_Robotic_Arm_Control\\VB_Robotic_Arm_Control.vbproj",
+        "packagesPath": "C:\\Users\\Prince\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Prince\\Documents\\GitHub\\arduino\\VB_Robotic_Arm_Control\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Nitro V15\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Prince\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -41,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net8.0-windows": {
@@ -67,19 +71,19 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.29, 8.0.29]"
+              "version": "[8.0.31, 8.0.31]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.29, 8.0.29]"
+              "version": "[8.0.31, 8.0.31]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.29, 8.0.29]"
+              "version": "[8.0.31, 8.0.31]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.29, 8.0.29]"
+              "version": "[8.0.31, 8.0.31]"
             }
           ],
           "frameworkReferences": {
@@ -90,7 +94,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
