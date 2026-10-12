@@ -16,7 +16,7 @@ Imports System.Reflection
 <Assembly: System.Reflection.AssemblyCompanyAttribute("VB_Robotic_Arm_Control"),  _
  Assembly: System.Reflection.AssemblyConfigurationAttribute("Release"),  _
  Assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0"),  _
- Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2c4a31217f911f91562d2298817ce5d13cd9474"),  _
+ Assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d959951f310878abd0ffe606cb3808b3d1dee01"),  _
  Assembly: System.Reflection.AssemblyProductAttribute("VB_Robotic_Arm_Control"),  _
  Assembly: System.Reflection.AssemblyTitleAttribute("VB_Robotic_Arm_Control"),  _
  Assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0"),  _
